@@ -12,8 +12,12 @@ int main(int argc, char *argv[])
     obj2->setText("test");
 
     
-    QObject::connect( obj, SIGNAL(textChanged(const QString&)), 
-            obj2, SLOT(setText(const QString&)));
+    //QObject::connect( obj, SIGNAL(textChanged(const QString&)), 
+    //        obj2, SLOT(setText(const QString&)));
+
+    QObject::connect(obj, &MyClass::textChanged, 
+                     obj2, &MyClass::setText);
+
 
 
     qDebug() << obj->text();
